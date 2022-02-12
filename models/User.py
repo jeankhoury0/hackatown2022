@@ -2,6 +2,9 @@ from mongoengine import *
 
 class User(Document):
     name = StringField()
-    phone_number = IntField()
+    phone = IntField()
     address = StringField()
-    coordinate = [FloatField(),FloatField()]
+    lat = StringField()
+    lng = StringField()
+    # coordinates = [FloatField(),FloatField()]
+

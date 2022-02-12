@@ -22,8 +22,8 @@
             value="{{ request.form['adress'] }}">
         </div>
 
-        <input type="hidden" name="lat" id="locationLatitude">
-        <input type="hidden" name="lng" id="locationLongitude">
+        <input type="hidden" name="lat" id="locationLatitude" value="{{ request.form['lat'] }}">
+        <input type="hidden" name="lng" id="locationLongitude" value="{{ request.form['lng'] }}">
 
         <!-- selector -->
         {% include 'selectorOfNotification.html' %}

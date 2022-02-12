@@ -20,4 +20,3 @@ class SmsController:
                 to=self.to
             )
         return message
-

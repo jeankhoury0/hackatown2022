@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request, url_for, flash, redirect
 from controllers.UserController import UserController
 from controllers.SmsController import SmsController
 from flask_mongoengine import MongoEngine
@@ -13,13 +13,12 @@ db = MongoEngine()
 db.init_app(app)
 
 
-@app.route('/')
+@app.route('/', methods=('GET', 'POST'))
 def index():
+    if request.method == 'POST':
+        res = UserController.createUser(request)
+        
     return render_template('index.html')
-
-@app.route('/create/')
-def create():
-    return UserController.createUser();    
 
 @app.route('/send-sms')
 def send_sms():
