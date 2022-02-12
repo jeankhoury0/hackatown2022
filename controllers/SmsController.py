@@ -1,12 +1,11 @@
-from dotenv import load_dotenv
 from twilio.rest import Client
 
-load_dotenv()
-
+import os
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 class SmsController:
-    
-    account_sid = "AC8d3853ec5bde4d8e2be006b412038beb"
-    auth_token = '3fb2c2f75640335d724d5a0a527f4825'
+    account_sid = os.environ.get("TWILIO_ACCOUNT_SID")
+    auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
     client = Client(account_sid, auth_token)
 
     def __init__(self, to, body):

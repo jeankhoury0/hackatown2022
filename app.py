@@ -3,6 +3,9 @@ from controllers.UserController import UserController
 from controllers.SmsController import SmsController
 from flask_mongoengine import MongoEngine
 from models.User import User
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -20,7 +23,7 @@ def create():
 
 @app.route('/send-sms')
 def send_sms():
-    newSms = SmsController("+15146475138", "Hey Jean, n'oublie pas de sortir ta poubelle")
+    newSms = SmsController("+14385301370", "Hey Jean, n'oublie pas de sortir ta poubelle")
     sms = newSms.sendSMS()
     return sms.sid
 
