@@ -4,4 +4,4 @@ class User(Document):
     name = StringField()
     phone_number = IntField()
     address = StringField()
-    coordinate = [];
+    coordinate = [FloatField(),FloatField()]

@@ -1,0 +1,36 @@
+
+<form method="post" class="post">
+    <div class="m-3">
+        <div class="row mb-3">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name"
+            placeholder="John Doe" class="form-control"
+            value="{{ request.form['name'] }}">
+        </div>
+
+        <div class="row mb-3">
+            <label for="name">Phone</label>
+            <input type="text" name="phone" id="phone"
+            placeholder="4385301370" class="form-control"
+            value="{{ request.form['phone'] }}">
+        </div>
+        
+        <div class="row mb-3">
+            <label for="name">Adress Selection</label>
+            <input type="text" name="address" id="location"
+            placeholder="123 Fake Street" class="form-control"
+            value="{{ request.form['adress'] }}">
+        </div>
+
+        <input type="hidden" name="lat" id="locationLatitude">
+        <input type="hidden" name="lng" id="locationLongitude">
+
+        <!-- selector -->
+        {% include 'selectorOfNotification.html' %}
+        
+
+    <div class="map" id="map"></div>
+    <input type="submit" value="Subscribe">
+</form>
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq8fIDX3uWCQkmOSCZgWv6Vgs21HTPTgY&libraries=places&callback=initMap&solution_channel=GMP_QB_addressselection_v1_cAB" async defer></script>

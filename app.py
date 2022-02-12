@@ -1,4 +1,6 @@
 from flask import Flask, jsonify, render_template
+from controllers.UserController import UserController
+from controllers.SmsController import SmsController
 from flask_mongoengine import MongoEngine
 from models.User import User
 
@@ -14,10 +16,15 @@ def index():
 
 @app.route('/create/')
 def create():
-    user = User(name="jean")
-    user.save()
-    return jsonify(user.to_json())
-    
+    return UserController.createUser();    
+
+@app.route('/send-sms')
+def send_sms():
+    newSms = SmsController("+15146475138", "Hey Jean, n'oublie pas de sortir ta poubelle")
+    sms = newSms.sendSMS()
+    return sms.sid
+
+
 
 if __name__ == '__main__':
     app.debug = True
