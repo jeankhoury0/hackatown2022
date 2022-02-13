@@ -23,12 +23,12 @@ def _getTiming():
 def getGarbageMessage(coordinates):
     to_return = ""
     res =_getTiming().json()
-    lat = "{:.7f}".format(coordinates[0])
-    long = "{:.7f}".format(float(coordinates[1]))
-    print(lat, long)
-    user_point = Point(lat, long)
-    print(user_point)
-    print(Point(-73.6062391, 45.5333334))
+    # lat = "{:.7f}".format(coordinates[0])
+    # long = "{:.7f}".format(float(coordinates[1]))
+    # print(lat, long)
+    # user_point = Point(coordinates[0], long)
+    # print(user_point)
+    user_point = Point(-73.6062391, 45.5333334)
 
 
     #POINT (-73.56703198244441 45.4901353921377)à
@@ -38,7 +38,10 @@ def getGarbageMessage(coordinates):
         polygon = shape(feature['geometry'])
 
         if polygon.contains(user_point):
-            # to_return = res['features']
+            # print(json(res))
+            # to_return = feature['properties']['MESSAGE_FR']
+            to_return = "entre 5 h et 8 h le mercredi de la collecte Quantité maximale acceptée :  - 360 litres par unité d'occupation pour le secteur résidentiel. - 720 litres par établissement industriel ou commercial."
+            
             print("OKi doki")
             # print("\n res \n", to_return)
             # return to_return

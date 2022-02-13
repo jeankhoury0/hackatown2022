@@ -23,10 +23,12 @@ def index():
             user_res = UserController.createUser(request)
             # todo fix this
             body_res = getGarbageMessage([-73.567031982444405, 45.490135392137702])
-            print(user_res.phone, [user_res.lng, user_res.lat], body_res)
             newSMS = SmsController(user_res.phone, body_res)
             newSMS.sendSMS()
+            print("WORKING")
+            return render_template('index.html')
         except:
+            print("ERR")
             return render_template('index.html')
 
     return render_template('index.html')
