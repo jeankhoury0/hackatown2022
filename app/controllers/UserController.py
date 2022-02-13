@@ -22,4 +22,4 @@ class UserController():
         getGarbageMessage([-73.567031982444405, 45.490135392137702])
         print("OK")
         user.save()
-        return jsonify(user.to_json())
+        return user

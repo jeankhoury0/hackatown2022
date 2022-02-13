@@ -1,5 +1,6 @@
 import requests
 import json
+from shapely.geometry import shape, Point
 
 from app.controllers.SmsController import SmsController
 
@@ -10,7 +11,7 @@ def _getTiming():
         res = requests.get(url_ordure_menage)
     except requests.ConnectionError:
         print("error")
-        return "Connection Error"  
+        return "Connection Error"
     
     print(res)       
     return res
@@ -18,19 +19,30 @@ def _getTiming():
 # return the message to the function
 
 
+
 def getGarbageMessage(coordinates):
     to_return = ""
     res =_getTiming().json()
-    for feature in range(len(res['features'])):
-        for coordinate in res['features'][feature]['geometry']['coordinates']:
-            for i in coordinate:
-                if i == coordinates:
-                    to_return = (res['features'][feature]
-                                ['properties']['MESSAGE_FR'])
-                    acc = SmsController("+14385301370", to_return)
-                    acc.sendSMS()
-                    print("SMS Was sent")
-                    print("this is the res", to_return)
-                    return to_return 
-        break
+    lat = "{:.7f}".format(coordinates[0])
+    long = "{:.7f}".format(float(coordinates[1]))
+    print(lat, long)
+    user_point = Point(lat, long)
+    print(user_point)
+    print(Point(-73.6062391, 45.5333334))
+
+
+    #POINT (-73.56703198244441 45.4901353921377)à
+    #POINT(-73.6062391 45.5333334)
+    
+    for feature in res['features']:
+        polygon = shape(feature['geometry'])
+
+        if polygon.contains(user_point):
+            # to_return = res['features']
+            print("OKi doki")
+            # print("\n res \n", to_return)
+            # return to_return
+
     return to_return
+
+
