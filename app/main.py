@@ -33,18 +33,20 @@ def index():
 
     return render_template('index.html')
 
-@app.route('/send-sms')
-def send_sms():
-    newSms = SmsController("+14385301370", "Hey Jean, n'oublie pas de sortir ta poubelle")
-    sms = newSms.sendSMS()
-    return sms.sid
+# @app.route('/send-sms')
+# def send_sms():
+#     newSms = SmsController("+14385301370", "Hey Jean, n'oublie pas de sortir ta poubelle")
+#     sms = newSms.sendSMS()
+#     return sms.sid
 
 @app.route('/get-garbage')
 def get_garbage():
     coordinates = [-73.567031982444405, 45.490135392137702]
     return getGarbageMessage(coordinates)
 
-    
+@app.route('/about')
+def get_about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.debug = True

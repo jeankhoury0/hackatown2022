@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/css/about.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1>Take out the trash</h1>
+                <h2>Get reminded to take out the trash</h2>
+                <hr>
+                <div>
+                    <h3>Inspiration</h3>
+
+                    <p>We always always forget to take out the trash! I wake up, hear the disposal truck go by my house
+                        and this make me mad! Why can't I be reminded to take out the trash the day before!
+                        If this is also a problem that you are facing, then you are not alone! Last year, the city of
+                        Montreal received 109 000 information requests for the different garbage collection services <a
+                            href="https://qlik.beta.montreal.ca/pub/single/?appid=a08941bc-0ec0-4596-9595-d3c7bc0491b1&amp;sheet=9f73553d-3d7a-4530-93fa-721e2093c98f&amp;opt=ctxmenu,currsel"
+                            rel="nofollow">open data</a>. This account to about 25 hours of work a day responding to
+                        questions that could be easily automated.</p>
+
+                    <h3>What it does</h3>
+
+                    <p><strong>Take out the trash</strong> is an SMS notification platform that will remind you the day
+                        before to take out the trash or other type of garbage (Household waste collection, Recycling
+                        collection, Collection of construction, renovation and demolition debris and bulky items and
+                        <strong>irregular collections</strong> ...)
+                        We want this service to be available to the public but also to be integrated to the 311 call
+                        center so that an agent can subscribe anyone calling so they don't call again!
+                        We choose SMS over notification so that anybody will be able to receive the alert even if they
+                        don't have a smartphone or if they are from low income households (you don't need that much
+                        technology to receive an sms!) </p>
+
+                    <h3>How we built it</h3>
+
+                    <p>We where thrilled to learn that Twilio was a part of the challenge!
+                        We used Python flask to build a form that subscribe the user to notifications. The forms address
+                        is validated with google place API.
+                        When validating the form, the user data is saved to a DB (mongoDB) and a task is added to the
+                        task queue (Celery). The user then receive the day before that the trash needs to be taken out!
+                        This data is queried from the various trash collections APIs available via the open data portal.
+                        Finally we hosted the website on Heroku but plan to move to a better storage solution if time
+                        permits.</p>
+
+                    <h3>Challenges we ran into</h3>
+
+                    <ul>
+                        <li>SOO MANY APIs that we needed to learn in such a short time frame (We all have headaches!).
+                            Ever heard of GeoJson? Its an amazing technology but its soo complicated to get working.
+                        </li>
+                        <li>First time using python Flask to build a website. Only one member of the team has web dev
+                            experience but never in Flask. </li>
+                        <li> We learned too late that Twilio API wont send SMS even with the MLH promo code. ** For this
+                            reason the phone numbers** working are only the ones of our teams. Don't hesitate to contact
+                            us if you want us to put your phone number in the database so that you can test it out
+                            yourself.</li>
+                    </ul>
+
+                    <h3>Accomplishments that we're proud of</h3>
+
+                    <ul>
+                        <li>We learned a new framework in such a small amount of time</li>
+                        <li>We where able to connect different services </li>
+                        <li>The app is quite good for only 24ish hours of work</li>
+                        <li>From something that was planned Friday evening we are impressed that we had the time to
+                            integrate most of the features !<br></li>
+                    </ul>
+
+                    <h3>What we learned</h3>
+
+                    <ul>
+                        <li>Always always test a service before planning your app around it</li>
+                        <li>Never publish secrets keys on GitHub public even if you want to go fast (we received 10
+                            alert emails)</li>
+                        <li>Don't tell yourself its not possible just do it :) </li>
+                    </ul>
+
+                    <h3>What's next for Take out the trash</h3>
+
+                    <ul>
+                        <li>It was just a fun idea but with doing a bit of research we really saw that there was a need
+                            for this! Next step is to pitch it to the open data community of Montreal and why not
+                            implement it in the 311 call center so that agents could receive less call!</li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="col-6 photo-sidebar">
+                <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_thumbnail_photos/001/834/357/datas/medium.png"
+                    alt="" class="img-fluid fixed" width="100%">
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

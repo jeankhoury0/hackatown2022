@@ -1,0 +1,15 @@
+:root{
+    --main-color: #f70000
+}
+h3{
+    color: var(--main-color);
+}
+
+.photo-sidebar{
+    padding: 1em;
+}
+
+.img-fluid{
+    border: 5px solid var(--main-color);
+    border-radius:25px;
+}
